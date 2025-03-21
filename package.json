@@ -1,0 +1,32 @@
+{
+  "name": "perplexity-server",
+  "version": "0.1.0",
+  "description": "alls upon perplexity api while i code to get docs, find apis to integrate, and to check deprecated code to make sure everything works properl",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "perplexity-server": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js",
+    "test": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.5.0",
+    "agentkeepalive": "^4.6.0",
+    "axios": "^1.7.9",
+    "axios-retry": "^4.5.0",
+    "better-sqlite3": "^11.8.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+}
