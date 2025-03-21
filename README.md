@@ -1,28 +1,31 @@
-We got an article about perpelxity mcp! 
-https://cline.bot/blog/supercharge-cline-3-ways-to-build-better-with-perplexity-mcp
-
 # MCP-researcher Server
 
-Your own research assistant inside of Cline! Utilizes Perplexity's new Sonar Pro API to get docs, create up-to-date api routes, and check deprecated code while you create features with Cline. 
+A powerful research assistant that integrates with Cline and Claude Desktop! Leverages Perplexity AI for intelligent search, documentation retrieval, API discovery, and code modernization assistance - all while you code.
 
-Includes Chain of Thought Reasoning and local chat history through SQLite thanks to Lix for the idea :)
+## Features
 
-<a href="https://glama.ai/mcp/servers/g1i6ilg8sl"><img width="380" height="200" src="https://glama.ai/mcp/servers/g1i6ilg8sl/badge" alt="MCP-researcher Server MCP server" /></a>
+- **Seamless Context Tracking**: Maintains conversation history in SQLite database to provide coherent responses across multiple queries
+- **Advanced Query Processing**: Uses Perplexity's Sonar models for sophisticated reasoning and detailed answers to complex questions
+- **Intelligent Rate Management**: Implements adaptive rate limiting with exponential backoff to maximize API usage without hitting limits
+- **High Performance Networking**: Optimizes API calls with connection pooling and automatic retry logic for reliable operation
 
 ## Tools
 
-### 1. [Search](https://github.com/DaInfernalCoder/researcher-mcp/blob/main/examples/search.md)
+### 1. Search
+
 Performs general search queries to get comprehensive information on any topic. The example shows how to use different detail levels (brief, normal, detailed) to get tailored responses.
 
-### 2. [Get Documentation](https://github.com/DaInfernalCoder/researcher-mcp/blob/main/examples/find-apis.md)
+### 2. Get Documentation
+
 Retrieves documentation and usage examples for specific technologies, libraries, or APIs. The example demonstrates getting comprehensive documentation for React hooks, including best practices and common pitfalls.
 
-### 3. [Find APIs](https://github.com/DaInfernalCoder/researcher-mcp/blob/main/examples/find-apis.md)
+### 3. Find APIs
+
 Discovers and evaluates APIs that could be integrated into a project. The example shows finding payment processing APIs with detailed analysis of features, pricing, and integration complexity.
 
-### 4. [Check Deprecated Code](https://github.com/DaInfernalCoder/researcher-mcp/blob/main/examples/check-deprecated-code.md)
-Analyzes code for deprecated features or patterns, providing migration guidance. The example demonstrates checking React class components and lifecycle methods for modern alternatives.
+### 4. Check Deprecated Code
 
+Analyzes code for deprecated features or patterns, providing migration guidance. The example demonstrates checking React class components and lifecycle methods for modern alternatives.
 
 ## Installation
 
@@ -32,55 +35,39 @@ Analyzes code for deprecated features or patterns, providing migration guidance.
 
 2. Clone the repo
 
-- git clone https://github.com/DaInfernalCoder/researcher-mcp perplexity-server 
-
-- cd perplexity-server
-
-3. Install dependencies and build:
-npm install
+3. Install dependencies and build
 
 4. Get a Perplexity API key from [https://www.perplexity.ai/settings/api](https://www.perplexity.ai/settings/api)
 
 5. Create the MCP settings file in the appropriate location for your OS:
-macOS: ~/Library/Application Support/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json
-Windows: %APPDATA%\Cursor\User\globalStorage\saoudrizwan.claude-dev\settings\cline_mcp_settings.json
-Linux: ~/.config/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json
 
-5. To use with Claude Desktop, add the server config:
+6. To use with Claude Desktop, add the server config:
 
-On MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
-
-6. To use with Cline, add into mcpServers: 
+7. To use with Cline, add into mcpServers:
 
 ```json
 {
   "mcpServers": {
     "perplexity-server": {
       "command": "node",
-      "args": [
-        "[path/to/researcher-mcp/index.js]"
-      ],
+      "args": ["[path/to/researcher-mcp/build/index.js]"],
       "env": {
-        "PERPLEXITY_API_KEY": ""
+        "PERPLEXITY_API_KEY": "pplx-...",
+        "PERPLEXITY_MODEL": "sonar-reasoning" // you can use different models
       },
       "disabled": false,
+      "alwaysAllow": [],
       "autoApprove": [
         "search",
         "get_documentation",
         "find_apis",
-        "check_deprecated_code"
+        "check_deprecated_code",
+        "get_request_status"
       ]
     }
   }
 }
 ```
 
-7. Build the server: 
-npm run build
-
-Make sure to:
-- Replace /absolute/path/to with the actual path where you cloned the repository
-- Replace your-api-key-here with your Perplexity API key
-- Keep the same autoApprove settings for consistent behavior
-
+8. Build the server:
+   npm run build
