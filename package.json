@@ -18,15 +18,15 @@
     "test": "tsc --noEmit"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.5.0",
+    "@modelcontextprotocol/sdk": "^1.9.0",
     "agentkeepalive": "^4.6.0",
-    "axios": "^1.7.9",
+    "axios": "^1.8.4",
     "axios-retry": "^4.5.0",
-    "better-sqlite3": "^11.8.1"
+    "better-sqlite3": "^11.9.1"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.12",
-    "@types/node": "^20.11.24",
-    "typescript": "^5.3.3"
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20.17.30",
+    "typescript": "^5.8.3"
   }
 }
