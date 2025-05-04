@@ -1,11 +1,11 @@
 {
-  "name": "perplexity-server",
-  "version": "0.1.0",
-  "description": "alls upon perplexity api while i code to get docs, find apis to integrate, and to check deprecated code to make sure everything works properl",
+  "name": "research-mcp",
+  "version": "1.0.0",
+  "description": "MCP server providing research tools by proxying an upstream API (e.g., Perplexity)",
   "private": true,
   "type": "module",
   "bin": {
-    "perplexity-server": "./build/index.js"
+    "research-mcp": "./build/index.js"
   },
   "files": [
     "build"
@@ -18,15 +18,15 @@
     "test": "tsc --noEmit"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.9.0",
+    "@modelcontextprotocol/sdk": "^1.11.0",
+    "@types/opossum": "^8.1.8",
     "agentkeepalive": "^4.6.0",
-    "axios": "^1.8.4",
+    "axios": "^1.9.0",
     "axios-retry": "^4.5.0",
-    "better-sqlite3": "^11.9.1"
+    "opossum": "^5.0.1"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.13",
-    "@types/node": "^20.17.30",
+    "@types/node": "^22.15.3",
     "typescript": "^5.8.3"
   }
 }
